@@ -160,6 +160,18 @@ public class Main {
 						mi.representacaoMatrizNaoOrdenada(tamanhoV(), tamanhoE());
 						break;
 					
+					case 2:
+						mi.representacaoMatrizOrdenada(tamanhoV(), tamanhoE());
+						break;
+						
+					case 3:
+						mi.representacaoMatrizValorado(tamanhoV(), tamanhoE());
+						break;
+						
+					case 4:
+						mi.representacaoMatrizMultigrafo(tamanhoV(), tamanhoE());
+						break;
+					
 					}
 					op4 = retornaMenu2();
 				}while(op4!=5);
