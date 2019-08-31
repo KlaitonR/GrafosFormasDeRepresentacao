@@ -109,6 +109,14 @@ public class Main {
 						la.grafoNaoOrientado(tamanhoV(),tamanhoE());
 						break;
 						
+					case 2:
+						break;
+						
+					case 3:
+						break;
+						
+					case 4:
+						break;
 					}
 					
 					op2 = retornaMenu2();
@@ -127,19 +135,19 @@ public class Main {
 					
 					switch (op3) {
 					case 1:
-						ma.representacaoMatrizNaoOrdenada(tamanhoV(),tamanhoE()); //passa a ordem e o tamanho do grafo como parametro
+						ma.representacaoMatrizAdjacencia(tamanhoV(),tamanhoE(), op3); //passa a ordem e o tamanho do grafo como parametro
 						break;
 						
 					case 2:
-						ma.RepresentacaoMatrizOrdenada(tamanhoV(), tamanhoE());
+						ma.representacaoMatrizAdjacencia(tamanhoV(), tamanhoE(), op3);
 						break;
 						
 					case 3:
-						ma.representacaoValorado(tamanhoV(), tamanhoE());
+						ma.representacaoMatrizAdjacencia(tamanhoV(), tamanhoE(), op3);
 						break;
 					
 					case 4:
-						ma.representacaoMultigrafo(tamanhoV(), tamanhoE());
+						ma.representacaoMatrizAdjacencia(tamanhoV(), tamanhoE(), op3);
 					
 					}
 					op3 = retornaMenu2();
@@ -157,19 +165,19 @@ public class Main {
 					
 					switch (op4) {
 					case 1:
-						mi.representacaoMatrizNaoOrdenada(tamanhoV(), tamanhoE());
+						mi.representacaoMatrizIncidencia(tamanhoV(), tamanhoE(),op4);
 						break;
 					
 					case 2:
-						mi.representacaoMatrizOrdenada(tamanhoV(), tamanhoE());
+						mi.representacaoMatrizIncidencia(tamanhoV(), tamanhoE(),op4);				
 						break;
 						
 					case 3:
-						mi.representacaoMatrizValorado(tamanhoV(), tamanhoE());
+						mi.representacaoMatrizIncidencia(tamanhoV(), tamanhoE(),op4);
 						break;
 						
 					case 4:
-						mi.representacaoMatrizMultigrafo(tamanhoV(), tamanhoE());
+						mi.representacaoMatrizIncidencia(tamanhoV(), tamanhoE(),op4);
 						break;
 					
 					}

@@ -7,7 +7,7 @@ public class Grafo {
 	private ArrayList<Vertice> conjuntoV = new ArrayList<>();
 	private ArrayList<Aresta> conjuntoE = new ArrayList<>();
 	
-	public String toString() {
+	/*public String toString() {
 		
 		String listaE = "{";
 		
@@ -16,6 +16,20 @@ public class Grafo {
 		}
 		return listaE + "}";
 	}
+	*/
+				
+		public	String toString() {
+			
+			String listaAd ="";
+			
+			for(Vertice v : conjuntoV){
+				listaAd += v.getListaDeAdjacencia().toString();
+			}
+			
+			return listaAd;
+			
+			
+		}
 
 	public ArrayList<Vertice> getConjuntoV() {
 		return conjuntoV;

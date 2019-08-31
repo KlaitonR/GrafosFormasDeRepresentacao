@@ -8,11 +8,11 @@ public class Vertice {
 	
 	private ArrayList<Vertice> ListaDeAdjacencia = new ArrayList<>();
 	
-	public String toString () {
+	public String toString () { //ToString para exibir a lista de adjacência
 		
 		String res = "(";
 		
-		for(Vertice v: getListaDeAdjacencia()) {
+		for(Vertice v: ListaDeAdjacencia) {
 			res+= v.getValor() + ", ";
 		}
 		

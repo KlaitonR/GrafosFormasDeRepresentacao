@@ -1,10 +1,10 @@
-package ListaDeArestas;
+package ListaDeAdjacencia;
 
-public class ListaDeArestas {
+public class ListaDeAdjacencia {
 
-	private Aresta primeiro, atual, ultimo; //Elementos da lista
+	private Aresta primeiro, atual, ultimo, arestaAd; //Elementos da lista
 	
-	public ListaDeArestas() {
+	public ListaDeAdjacencia() {
 		primeiro = atual = ultimo = null;  
 	} 
 
@@ -21,9 +21,16 @@ public class ListaDeArestas {
 				primeiro = aresta; // Se estiver vazia, coloca a aresta instanciada como a primeira, ultima e atual da lista
 				ultimo = aresta;
 				atual = aresta; 
-				}else { // Se não estiver vazia, indica que a proxima aresta da lista será a recém instanciada, e posteriormente a aloca como última
+				}else { // Se não estiver vazia, indica que a proxima aresta da lista será a recém instanciada, e posteriormente será aloca como última
 					ultimo.proximo = aresta; 
 					ultimo = aresta; 
+					
+					while(atual!= null && atual.vOrigem != vOrigem && atual.vDestino != atual.vDestino) {  
+						atual = atual.proximo; 
+					}
+					
+					ultimo.listaAresta.arestaAd = atual;
+					
 				}
 			}
 		
@@ -60,7 +67,7 @@ public class ListaDeArestas {
 				}
 			}
 		
-public void insereArestaMultiarestas(int vOrigem, int vDestino, int nArestas) {  //Inserir uma aresta em um GRAFO MULTI ARESTAS
+		public void insereArestaMultiarestas(int vOrigem, int vDestino, int nArestas) {  //Inserir uma aresta em um GRAFO MULTI ARESTAS
 			
 			Aresta aresta = new Aresta(vOrigem, vDestino, nArestas);
 			

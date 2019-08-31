@@ -1,74 +1,24 @@
-package ListaAdjacencia;
-
-import java.util.ArrayList;
+  package ListaAdjacencia;
 
 import javax.swing.JOptionPane;
 
 public class ListaAdjacencia {
 	
-	ArrayList<Vertice> conjuntoV = new ArrayList<>();
+	//ArrayList<Vertice> conjuntoV = new ArrayList<>();
 
 	public void grafoNaoOrientado(int v, int e){
 		
 		 
-		 String representação = "";
+		 //String representacao = "";
 		 Grafo g = insereConjuntoV(v);
-		 insereConjuntoE(g.getConjuntoV(),e, g);
+		 insereConjuntoE(e,g);
+		 Representacao(g);
 		 
-		//int i=1;
-		//Grafo g = new Grafo();
-		
-		//do {
-			
-			//Vertice v1 = new Vertice();
-			//Vertice v2 = new Vertice();
-			//v1.setValor(Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro valor do conjunto "+ i +".")));
-			//v2.setValor(Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo valor do conjunto "+ i +".")));
-			
-			//Adicinar vertices no Conjunto V
-			//g.getConjuntoV().add(v1);
-			//g.getConjuntoV().add(v2);
-			//conjuntoV.add(v2);
-			//conjuntoV.add(v1);
-			
-			//Adicionar os vertices adjacentes
-			//v1.getListaDeAdjacencia().add(v2);
-			//v2.getListaDeAdjacencia().add(v1);
-			
-			//Aresta a = new Aresta(v1,v2);
-			
-			//Adicionar as Arestas no conjunto E
-			//g.getConjuntoE().add(a);
-			
-			//verificar se o vertice já foi inserido, e adicionar o outro vertice do seu conjunto como seu adjacente
-			//for(Vertice v: conjuntoV) {
-				//Pegar o vertice que esta sendo adicionado, e colocar em seu conjunto de adjacencias o vertice que faz conjunto com o que esta sendo inserido
-				//if(v.getValor()== v1.getValor()) {
-				//	v.getListaDeAdjacencia().add(v2);
-				//}else{
-				//	v1.getListaDeAdjacencia().add(v2);
-					
-				//}
-			
-				//if(v.getValor()== v2.getValor()) {
-					//v.getListaDeAdjacencia().add(v1);
-			//	}else {
-			//		v2.getListaDeAdjacencia().add(v1);
-			//	}
-		//	}
-			//conjuntoV.add(v1);
-			//conjuntoV.add(v2);
-		//	i++;
-			
-		//}while(i<=e);
+		// conjuntoV = g.getConjuntoV();
 		
 		//Roda toda a lista de vertices do grafo adicionando a String representação
 		//o valor do vertices e sua respectiva lista de adjacencia com o toString de cada Vertice
-		for(Vertice vertice: conjuntoV) {
-			representação+= vertice.getValor() +" - " + vertice.toString() + ")"+"\n ";
-		}
-		
-		JOptionPane.showMessageDialog(null, representação);
+		//for(Vertice vertice: conjuntoV) {
 		
 	}
 	
@@ -82,71 +32,49 @@ public class ListaAdjacencia {
 			Vertice v = new Vertice();
 			v.setValor(Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ i +"º vertice.")));
 			g.getConjuntoV().add(v);
-			conjuntoV.add(v);
 			i++;
 		}while(i<=ver);
 		
 		return g;
 	}
 	
-	public Grafo insereConjuntoE(ArrayList<Vertice> vertices,int e,Grafo g) {
+	public Grafo insereConjuntoE(int e,Grafo g) {
 		
-		ArrayList<Vertice> ver = new ArrayList<>();
-		ver = vertices;
+		//ArrayList<Vertice> ver = new ArrayList<>();
+		//ver = vertices; //Pega a ArrayList de vertices do grafo que veio por parametro
 		
 		int i=1;
 		do {
 			
 			Vertice v1 = new Vertice();
 			Vertice v2 = new Vertice();
-			v1.setValor(Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro valor do conjunto "+ i +".")));
-			v2.setValor(Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo valor do conjunto "+ i +".")));
 			
-			for(Vertice v: ver) {
-				
-				if(v1.getValor()==v.getValor()) {
-					
-					int x = v1.getListaDeAdjacencia().size();
-					do {
-						Vertice vtemp = new Vertice();
-						vtemp = v1.getListaDeAdjacencia().get(x);
-						if(vtemp!=v) {
-							v1.getListaDeAdjacencia().add(v2);
-						}
-						x--;
-					}while(x!=0|x>0);
-					
-					//for(int x = v1.getListaDeAdjacencia().size();x>0;x--){
-						//if(v1.getListaDeAdjacencia().get(x)!=v) {
-						//	v1.getListaDeAdjacencia().add(v2);
-						//	}
-					//}
-				}
-				
-				if(v2.getValor()==v.getValor()) {
-					
-					int x = v2.getListaDeAdjacencia().size();
-					do {
-						if(v2.getListaDeAdjacencia().get(x)!=v) {
-							v2.getListaDeAdjacencia().add(v1);
-						}
-						x--;
-					}while(x!=0|x>0);
-					
-					//for(int y = v2.getListaDeAdjacencia().size();y>0;y--){
-						//if(v2.getListaDeAdjacencia().get(y)!=v) {
-						//	v2.getListaDeAdjacencia().add(v1);
-						//}
-					//}
-				}
-				
-			}
+			v1.setValor(Integer.parseInt(JOptionPane.showInputDialog("Insira o vertice de origem do conjunto "+ i +".")));
+			v2.setValor(Integer.parseInt(JOptionPane.showInputDialog("Insira o vertice de origem do conjunto "+ i +".")));
 			
-			//v1.getListaDeAdjacencia().add(v2);
-			//v2.getListaDeAdjacencia().add(v1);
-
-			Aresta a = new Aresta(v1,v2);
+			v1.getListaDeAdjacencia().add(v2);
+			v2.getListaDeAdjacencia().add(v1);
+			
+			Aresta a = new Aresta(v1, v2);
 			g.getConjuntoE().add(a);
+			
+			//for(Vertice v: ver) { //Rodar lista de vertices
+			for(int j = 1; j<=g.getConjuntoV().size();j++) {
+				
+				if(v1.getValor()==g.getConjuntoV().get(j).getValor()) {
+					
+					v1.getListaDeAdjacencia().add(v2);
+					
+				}else {
+					
+					if(v2.getValor()==g.getConjuntoV().get(j).getValor()) {
+						
+						v2.getListaDeAdjacencia().add(v1);
+						
+					}	
+				}
+			}
+			//}
 			
 			i++;
 			
@@ -154,6 +82,21 @@ public class ListaAdjacencia {
 		
 		
 		return g;
+	}
+	
+	public void Representacao (Grafo g) {
+		
+		String representacao = "";
+		
+		 for(int i = 1; i<=g.getConjuntoV().size();i++) {
+			 for(int j = 1; i<=g.getConjuntoV().size();j++) {
+				 representacao += g.getConjuntoV().get(i).getValor() +" - " + g.getConjuntoV().get(i).getListaDeAdjacencia().get(j).getValor() + ")"+"\n ";
+			 }
+		 }
+			//representação += vertice.getValor() +" - " + vertice.toString() + ")"+"\n ";
+		//}
+		
+		JOptionPane.showMessageDialog(null, representacao);
 	}
 	
 
