@@ -1,8 +1,8 @@
 package ListaDeAdjacencia;
 
 public class ListaDeAdjacencia {
-
-	private Aresta primeiro, atual, ultimo, arestaAd; //Elementos da lista
+	//Elementos da lista
+	private Aresta primeiro, atual, ultimo; //arestaAd
 	
 	public ListaDeAdjacencia() {
 		primeiro = atual = ultimo = null;  
@@ -29,7 +29,7 @@ public class ListaDeAdjacencia {
 						atual = atual.proximo; 
 					}
 					
-					ultimo.listaAresta.arestaAd = atual;
+					//ultimo.listaAresta.arestaAd = atual;
 					
 				}
 			}

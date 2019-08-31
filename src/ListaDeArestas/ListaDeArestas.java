@@ -3,9 +3,11 @@ package ListaDeArestas;
 public class ListaDeArestas {
 
 	private Aresta primeiro, atual, ultimo; //Elementos da lista
+	private Vertice primeiroV, ultimoV;
 	
 	public ListaDeArestas() {
-		primeiro = atual = ultimo = null;  
+		primeiro = atual = ultimo = null; 
+		primeiroV = ultimoV = null;
 	} 
 
 		// Retorna um booleano indicando se a lista está vazia 
@@ -13,98 +15,129 @@ public class ListaDeArestas {
 		return primeiro == null; 
 	}
 	
+	public boolean estaVazioV() {
+		return primeiroV == null; 
+	}
+	
+	public void insereVertice(int v) {  //Inserir uma aresta em um GRAFO NÃO ORIENTADO
+		
+		Vertice vertice = new Vertice(v);
+		
+		if (estaVazioV()) { //verifica se está vazia
+			primeiroV = vertice; // Se estiver vazia, coloca a aresta instanciada como a primeira, ultima e atual da lista
+			ultimoV = vertice;
+			}else { // Se não estiver vazia, indica que a proxima aresta da lista será a recém instanciada, e posteriormente a aloca como última
+				ultimoV.proximo = vertice; 
+				ultimoV = vertice; 
+			}
+	}
+	
 	public void insereArestaNaoOrientada(int vOrigem, int vDestino) {  //Inserir uma aresta em um GRAFO NÃO ORIENTADO
 			
-			Aresta aresta = new Aresta(vOrigem, vDestino);
+		Aresta aresta = new Aresta(vOrigem, vDestino);
 			
-			if (estaVazio()) { //verifica se está vazia
-				primeiro = aresta; // Se estiver vazia, coloca a aresta instanciada como a primeira, ultima e atual da lista
-				ultimo = aresta;
-				atual = aresta; 
-				}else { // Se não estiver vazia, indica que a proxima aresta da lista será a recém instanciada, e posteriormente a aloca como última
-					ultimo.proximo = aresta; 
-					ultimo = aresta; 
-				}
-			}
-		
-	
-		public void insereArestaOrientada(int vOrigem, int vDestino) { //Inserir uma aresta em um GRAFO ORIENTADO
-			
-			Aresta aresta = new Aresta(vOrigem, vDestino);
-			
-			if (estaVazio()) {
-				primeiro = aresta;
-				ultimo = aresta;
-				atual = aresta; 
+		if (estaVazio()) { 
+			primeiro = aresta; 
+			ultimo = aresta;
+			atual = aresta; 
 			}else {
-				//if(buscaElemento(vDestino, vOrigem) == -1) {
-					ultimo.proximo = aresta; 
-					ultimo = aresta; 
-				//}else {
-				//	JOptionPane.showMessageDialog(null, aresta.vOrigem + " não pode ser adjacente à " + aresta.vDestino);
-				//}	
+				ultimo.proximo = aresta; 
+				ultimo = aresta; 
 			}
 		}
 		
-		public void insereArestaValorada(int vOrigem, int vDestino, int valor) {  //Inserir uma aresta em um GRAFO VALORADO
+	
+	public void insereArestaOrientada(int vOrigem, int vDestino) { //Inserir uma aresta em um GRAFO ORIENTADO
 			
-			Aresta aresta = new Aresta(vOrigem, vDestino, valor);
+		Aresta aresta = new Aresta(vOrigem, vDestino);
 			
-			if (estaVazio()) {
-				primeiro = aresta;
-				ultimo = aresta;
-				atual = aresta; 
-				}else {
-					ultimo.proximo = aresta; 
-					ultimo = aresta; 
-				}
-			}
+		if (estaVazio()) {
+			primeiro = aresta;
+			ultimo = aresta;
+			atual = aresta; 
+		}else {
+				ultimo.proximo = aresta; 
+				ultimo = aresta; 
+		}
+	}
 		
-public void insereArestaMultiarestas(int vOrigem, int vDestino, int nArestas) {  //Inserir uma aresta em um GRAFO MULTI ARESTAS
+	public void insereArestaValorada(int vOrigem, int vDestino, int valor) {  //Inserir uma aresta em um GRAFO VALORADO
 			
-			Aresta aresta = new Aresta(vOrigem, vDestino, nArestas);
+		Aresta aresta = new Aresta(vOrigem, vDestino, valor);
 			
-			if (estaVazio()) {
-				primeiro = aresta;
-				ultimo = aresta;
-				atual = aresta; 
-				}else {
-					ultimo.proximo = aresta; 
-					ultimo = aresta; 
-				}
+		if (estaVazio()) {
+			primeiro = aresta;
+			ultimo = aresta;
+			atual = aresta; 
+			}else {
+				ultimo.proximo = aresta; 
+				ultimo = aresta; 
 			}
+	}
 		
-		public void moveParaPosicao(int pos) { //mover para a poção indicado pelo parâmetro "pos"
+	public void insereArestaMultiarestas(int vOrigem, int vDestino, int nArestas) {  //Inserir uma aresta em um GRAFO MULTI ARESTAS
 			
-			atual = primeiro; // A aresta atual será a primeira da lista
+		Aresta aresta = new Aresta(vOrigem, vDestino, nArestas);
+			
+		if (estaVazio()) {
+			primeiro = aresta;
+			ultimo = aresta;
+			atual = aresta; 
+			}else {
+				ultimo.proximo = aresta; 
+				ultimo = aresta; 
+			}
+	}
+		
+	public void moveParaPosicao(int pos) { //mover para a poção indicado pelo parâmetro "pos"
+			
+		atual = primeiro; // A aresta atual será a primeira da lista
 			
 			for(int i=0; i<pos; i++) { //percorre a lista até a posição indicada
 				atual= atual.proximo;
 			}
 		}
 		
-		public int buscaElemento(int vOrigem, int vDestino) { //buscar a aresta (conjunto) indicado
+	public boolean buscaElemento(int vOrigem, int vDestino) { //buscar a aresta (conjunto) indicado
 			
-			int cont = 0; 
-			atual = primeiro;
-			//Enquanto o valor não for nulo (não chegar ao fim da lista, onde o ultima aresta.proximo aponta para null)
-			//e o vertice origem e destino não forem achados, continuará a percorer a lista
-			while(atual!= null && atual.vOrigem != vOrigem && atual.vDestino != atual.vDestino) {  
-				atual = atual.proximo; 
-				cont ++; //contador
-			}
-			
-			if (atual != null) //se a aresta for achada, retorna o valor do contador
-				return cont; 
-			
-			return -1; // caso retorne -1, significa que a arresta não existe no conjunto E
+		atual = primeiro;
+		//Enquanto o valor não for nulo (não chegar ao fim da lista, onde o ultima aresta.proximo aponta para null)
+		//e o vertice origem e destino não forem achados, continuará a percorer a lista
+		while(atual!= null && (atual.vOrigem != vOrigem || atual.vDestino != vDestino)) {  
+			atual = atual.proximo; 
 		}
+			
+		if (atual != null) { //se a aresta for achada, retorna o valor do contador
+			return true; 
+		}
+		
+		return false; // caso retorne -1, significa que a arresta não existe no conjunto E
+		
+	}
+	
+	public boolean buscaElementoValorado(int vOrigem, int vDestino, int valor) { //buscar a aresta (conjunto) indicado
+		
+		atual = primeiro;
+		//Enquanto o valor não for nulo (não chegar ao fim da lista, onde o ultima aresta.proximo aponta para null)
+		//e o vertice origem e destino não forem achados, continuará a percorer a lista
+		while(atual!= null && (atual.vOrigem != vOrigem || atual.vDestino != vDestino || atual.valor != valor)) {  
+			atual = atual.proximo; 
+		
+		}
+			
+		if (atual != null) { //se a aresta for achada, retorna o valor do contador
+			return true; 
+		}
+		
+		return false; // caso retorne -1, significa que a arresta não existe no conjunto E
+		
+	}
 		
 	
 	public String RepresentacaoListaDeArestas() {
 		
 		String representacao = "E = { "; //Conjunto E
-		primeiro = atual;
+		atual = primeiro;
 		
 		while(atual!= null) { //percorrer a lista
 			representacao+="("+atual.vOrigem + "," + atual.vDestino + ") "; //concatenar os valores
@@ -114,10 +147,10 @@ public void insereArestaMultiarestas(int vOrigem, int vDestino, int nArestas) { 
 		return representacao + " }"; //retornar a representação
 	}
 	
-public String RepresentacaoValoradaEmultigrafos() {
+	public String RepresentacaoValoradaEmultigrafos() {
 		
 		String representacao = "E = { ";
-		primeiro = atual;
+		atual = primeiro;
 		
 		while(atual!= null) {
 			representacao+="("+atual.vOrigem + "," + atual.vDestino + "," + atual.valor + ") ";

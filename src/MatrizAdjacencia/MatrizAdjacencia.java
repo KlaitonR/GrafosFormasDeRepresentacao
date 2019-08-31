@@ -25,8 +25,8 @@ public class MatrizAdjacencia {
 		if(op==1) {
 			
 			for(int i=1;i<=te;i++) {
-				origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-				destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
+				origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+				destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
 				
 				for(int j=1;j<=te;j++) {
 					if((origem[i]==destino[j] && destino[i]==origem[j])|| (origem[i]==origem[j] && destino[i]==destino[j] && i!=j)) { //verifica se está arresta já foi inserida, ex: (1,2) ou (2,1)
@@ -46,8 +46,8 @@ public class MatrizAdjacencia {
 			if(op==2) {
 				
 				for(int i=1;i<=te;i++) {
-					origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-					destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
+					origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+					destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
 					
 					for(int j=1;j<=te;j++) {
 						if((origem[i]==origem[j] && destino[i]==destino[j])) { //verifica se está arresta já foi inserida, ex: (1,2) ou (2,1)
@@ -65,16 +65,16 @@ public class MatrizAdjacencia {
 			}else {
 				if(op==3) {
 					for(int i=1;i<=te;i++) {
-						origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-						destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
+						origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+						destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
 						valor[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o valor da aresta (" + origem[i] + ","+destino[i]+"):"));
 					}
 				}else {
 					if(op==4) {
 						for(int i=1;i<=te;i++) {
-							origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-							destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-							nAresta[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira a quantidade de arestas para este conjunto (" + origem[i] + ","+destino[i]+"):"));
+							origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+							destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+							nAresta[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira a quantidade de arestas para este par (" + origem[i] + ","+destino[i]+"):"));
 						}
 					}
 				}
@@ -99,7 +99,7 @@ public class MatrizAdjacencia {
 			somaDosGraus += grauDoVertice[i];
 		}
 		
-		if(somaDosGraus != (te*2)) {
+		if(somaDosGraus != (e*2)) {
 			JOptionPane.showMessageDialog(null, "Estes não são parametros de um grafo, tente outros valores.");
 		}else {
 		*/

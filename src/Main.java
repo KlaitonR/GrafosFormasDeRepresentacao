@@ -8,82 +8,152 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//if() { //Validação se é grafo ou não
-			
-		//}
-		
 		int op = 0;
 	
 		do {
 			switch (op) {
-			case 1:
+			case 1: //LISTA DE ARESTAS
 				
 				int op1 = 0;
 				do {
 					
 					ListaDeArestas lda= new ListaDeArestas();
-					int i;
+					int v;
+					int e;
 					int j = 1;
 					
 					switch (op1) { 
 					case 1: // Para representação de listas de arestas com grafo não orientado
-						i = tamanhoE();
-						do {
+						v = tamanhoV(); //tamanhoo conjunto V
+						e = tamanhoE(); //tamanho conjunto E
+						
+						do { //Inserindo conjunto V
+							
+							int vertice= Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:"));
+							lda.insereVertice(vertice);
+							j++;
+					
+						}while(j<=v);
+						
+						j=1;
+						
+						do { // Inserindo conjunto E
+							
 							int vOrigem = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro valor da aresta "+ j +""));
 							int vDestino = Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo valor da aresta "+ j +""));
-							lda.insereArestaNaoOrientada(vOrigem, vDestino);
-							j++;
-						}while(j<=i);
+							
+							if(lda.buscaElemento(vOrigem, vDestino) == false && lda.buscaElemento(vDestino, vOrigem) == false) { //verifica se está aresta já existe na lista
+								lda.insereArestaNaoOrientada(vOrigem, vDestino);
+								j++;
+							}else {
+								JOptionPane.showMessageDialog(null, "Está aresta já foi inserida!");
+							}
+
+						}while(j<=e);
 						
 						JOptionPane.showMessageDialog(null,lda.RepresentacaoListaDeArestas());
 						break;
 						
 					case 2:
-						i = tamanhoE();
+						v = tamanhoV();
+						e = tamanhoE();
+						
+						do {
+							
+							int vertice= Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:"));
+							lda.insereVertice(vertice);
+							j++;
+					
+						}while(j<=v);
+						
+						j=1;
 						
 						do {
 							int vOrigem = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +""));
 							int vDestino = Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +""));
-							lda.insereArestaOrientada(vOrigem, vDestino);
-							j++;
-						}while(j<=i);
+							
+							if(lda.buscaElemento(vOrigem, vDestino) == false) {
+								lda.insereArestaOrientada(vOrigem, vDestino);
+								j++;
+							}else {
+								JOptionPane.showMessageDialog(null, "Está aresta já foi inserida!");
+							}
+						}while(j<=e);
 						
 						JOptionPane.showMessageDialog(null,lda.RepresentacaoListaDeArestas());
 						
 						break;
 						
 					case 3:
-						i = tamanhoE();
+						v = tamanhoV();
+						e = tamanhoE();
+						
+						do {
+							
+							int vertice= Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:"));
+							
+								lda.insereVertice(vertice);
+								j++;
+					
+						}while(j<=v);
+						
+						j=1;
+						
 						do {
 							int vOrigem = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +":"));
 							int vDestino = Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +":"));
 							int valor = Integer.parseInt(JOptionPane.showInputDialog("Insira o valor da aresta "+ j +""));
-							lda.insereArestaValorada(vOrigem, vDestino,valor);
-							j++;
-						}while(j<=i);
+							
+							if(lda.buscaElementoValorado(vOrigem, vDestino, valor) == false) {
+								lda.insereArestaValorada(vOrigem, vDestino, valor);
+								j++;
+							}else {
+								JOptionPane.showMessageDialog(null, "Está aresta já foi inserida!");
+							}
+							
+						}while(j<=e);
 						
 						JOptionPane.showMessageDialog(null,lda.RepresentacaoValoradaEmultigrafos());
 						
 						break;
 						
 					case 4:
-						i = tamanhoE();
+						v = tamanhoV();
+						e = tamanhoE();
+						
+						do {
+							
+							int vertice= Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:"));
+							
+								lda.insereVertice(vertice);
+								j++;
+					
+						}while(j<=v);
+						
+						j=1;
+						
 						do {
 							int vOrigem = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +":"));
 							int vDestino = Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +":"));
 							int nAresta = 0;
+							
 							do {
 								nAresta = Integer.parseInt(JOptionPane.showInputDialog("Insira o número de " +
-										 "arestas para o conjunto ("+ vOrigem +","+vDestino+"):"));
+										 "arestas para o par ("+ vOrigem +","+vDestino+"):"));
 								if(nAresta<=0) {
 									JOptionPane.showMessageDialog(null, "Impossível inserir número de arestas negativas ou zero");
 								}
 								
 							}while(nAresta<=0);
 							
-							lda.insereArestaValorada(vOrigem, vDestino,nAresta);
-							j++;
-						}while(j<=i);
+							if(lda.buscaElementoValorado(vOrigem, vDestino, nAresta) == false) {
+								lda.insereArestaValorada(vOrigem, vDestino,nAresta);
+								j++;
+							}else {
+								JOptionPane.showMessageDialog(null, "Está aresta já foi inserida!");
+							}
+							
+						}while(j<=e);
 						
 						JOptionPane.showMessageDialog(null,lda.RepresentacaoValoradaEmultigrafos());
 						
@@ -96,7 +166,7 @@ public class Main {
 				
 				break;
 				
-			case 2:
+			case 2: //LISTA ADJACÊNCIA
 				int op2 = 0;
 				
 				do {
@@ -125,7 +195,7 @@ public class Main {
 			
 				break;
 				
-			case 3:
+			case 3: //MATRIZ ADJACÊNCIA
 				
 				int op3 = 0;
 				
@@ -155,7 +225,7 @@ public class Main {
 				
 				break;
 				
-			case 4:
+			case 4: //MATRIZ INCIDÊNCIA
 				
 				int op4 = 0;
 				

@@ -26,8 +26,8 @@ public void representacaoMatrizIncidencia(int v, int e, int op) {
 		if(op==1) {
 			
 			for(int i=1;i<=te;i++) {
-				origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-				destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
+				origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+				destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
 				
 				for(int j=1;j<=te;j++) {
 					if((origem[i]==destino[j] && destino[i]==origem[j]) || (origem[i]==origem[j] && destino[i]==destino[j] && i!=j)) { //verifica se está arresta já foi inserida, ex: (1,2) ou (2,1)
@@ -45,8 +45,8 @@ public void representacaoMatrizIncidencia(int v, int e, int op) {
 		}else {
 			if(op==2) {
 				for(int i=1;i<=te;i++) {
-					origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-					destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
+					origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+					destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
 					
 					for(int j=1;j<=te;j++) {
 						if((origem[i]==origem[j] && destino[i]==destino[j])) { //verifica se está arresta já foi inserida, ex: (1,2) ou (2,1)
@@ -64,17 +64,17 @@ public void representacaoMatrizIncidencia(int v, int e, int op) {
 			}else {
 				if(op==3) {
 					for(int i=1;i<=te;i++) {
-						origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-						destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-						valor[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o valor da aresta do conjunto " + i + ":"));
+						origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+						destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+						valor[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o valor da aresta do par " + i + ":"));
 					}
 					
 				}else {
 					if(op==4) {
 						for(int i=1;i<=te;i++) {
-							origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-							destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do conjunto " + i + ":"));
-							nAresta[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o número de arestas do conjunto " + i + ":"));
+							origem[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+							destino[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro label do par " + i + ":"));
+							nAresta[i] = Integer.parseInt(JOptionPane.showInputDialog("Insira o número de arestas do par " + i + ":"));
 						}
 					}
 				}
