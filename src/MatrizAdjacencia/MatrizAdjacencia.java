@@ -81,29 +81,6 @@ public class MatrizAdjacencia {
 			}
 		}
 		
-		int grauDoVertice [] = new int [t];
-		
-		for(int i=1;i<=t;i++) {
-			
-			for(int j=1;j<=te;j++) {
-				if(conjuntoV[i]==origem[j] || conjuntoV[i]==destino[j]) {
-					grauDoVertice[i]++;
-				}
-			}
-			
-		}
-		
-		/*int somaDosGraus = 0;
-		
-		for(int i=1;i<=t;i++) {
-			somaDosGraus += grauDoVertice[i];
-		}
-		
-		if(somaDosGraus != (e*2)) {
-			JOptionPane.showMessageDialog(null, "Estes não são parametros de um grafo, tente outros valores.");
-		}else {
-		*/
-		
 		int vlInfinito = 0;
 		
 		
