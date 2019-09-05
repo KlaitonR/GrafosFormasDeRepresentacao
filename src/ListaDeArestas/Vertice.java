@@ -2,10 +2,10 @@ package ListaDeArestas;
 
 public class Vertice {
 
-	int v;
+	String v;
 	Vertice proximo;
 	
-	public Vertice(int v) {
+	public Vertice(String v) {
 		this.v = v;
 	}
 

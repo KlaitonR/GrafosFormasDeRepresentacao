@@ -29,7 +29,7 @@ public class Main {
 						
 						do { //Inserindo conjunto V
 							
-							int vertice= Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:"));
+							String vertice = JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:");
 							lda.insereVertice(vertice);
 							j++;
 					
@@ -39,8 +39,8 @@ public class Main {
 						
 						do { // Inserindo conjunto E
 							
-							int vOrigem = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro valor da aresta "+ j +""));
-							int vDestino = Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo valor da aresta "+ j +""));
+							String vOrigem = JOptionPane.showInputDialog("Insira o primeiro valor da aresta "+ j +"");
+							String vDestino = JOptionPane.showInputDialog("Insira o segundo valor da aresta "+ j +"");
 							
 							if(lda.buscaElemento(vOrigem, vDestino) == false && lda.buscaElemento(vDestino, vOrigem) == false) { //verifica se está aresta já existe na lista
 								lda.insereArestaNaoOrientada(vOrigem, vDestino);
@@ -60,7 +60,7 @@ public class Main {
 						
 						do {
 							
-							int vertice= Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:"));
+							String vertice = JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:");
 							lda.insereVertice(vertice);
 							j++;
 					
@@ -69,8 +69,8 @@ public class Main {
 						j=1;
 						
 						do {
-							int vOrigem = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +""));
-							int vDestino = Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +""));
+							String vOrigem = JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +"");
+							String vDestino = JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +"");
 							
 							if(lda.buscaElemento(vOrigem, vDestino) == false) {
 								lda.insereArestaOrientada(vOrigem, vDestino);
@@ -90,7 +90,7 @@ public class Main {
 						
 						do {
 							
-							int vertice= Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:"));
+							String vertice = JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:");
 							
 								lda.insereVertice(vertice);
 								j++;
@@ -100,9 +100,15 @@ public class Main {
 						j=1;
 						
 						do {
-							int vOrigem = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +":"));
-							int vDestino = Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +":"));
-							int valor = Integer.parseInt(JOptionPane.showInputDialog("Insira o valor da aresta "+ j +""));
+							int valor = 0;
+							String vOrigem = JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +":");
+							String vDestino = JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +":");
+							try {
+								valor = Integer.parseInt(JOptionPane.showInputDialog("Insira o valor da aresta "+ j +""));
+							}catch (NumberFormatException ex) {
+								JOptionPane.showMessageDialog(null, "Insira apenas números.");
+								j--;
+							}
 							
 							if(lda.buscaElementoValorado(vOrigem, vDestino, valor) == false) {
 								lda.insereArestaValorada(vOrigem, vDestino, valor);
@@ -123,7 +129,7 @@ public class Main {
 						
 						do {
 							
-							int vertice= Integer.parseInt(JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:"));
+							String vertice = JOptionPane.showInputDialog("Insira o label do "+ j +"º vertice:");
 							
 								lda.insereVertice(vertice);
 								j++;
@@ -133,24 +139,30 @@ public class Main {
 						j=1;
 						
 						do {
-							int vOrigem = Integer.parseInt(JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +":"));
-							int vDestino = Integer.parseInt(JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +":"));
+							String vOrigem =JOptionPane.showInputDialog("Insira o primeiro vertice da aresta "+ j +":");
+							String vDestino = JOptionPane.showInputDialog("Insira o segundo vertice da aresta "+ j +":");
 							int nAresta = 0;
 							
-							do {
-								nAresta = Integer.parseInt(JOptionPane.showInputDialog("Insira o número de " +
-										 "arestas para o par ("+ vOrigem +","+vDestino+"):"));
-								if(nAresta<=0) {
-									JOptionPane.showMessageDialog(null, "Impossível inserir número de arestas negativas ou zero");
-								}
+							try {
+								do {
+									nAresta = Integer.parseInt(JOptionPane.showInputDialog("Insira o número de " +
+											"arestas para o par (" + vOrigem + "," + vDestino + "):"));
+									if(nAresta<=0) {
+										JOptionPane.showMessageDialog(null, "Impossível inserir número de arestas negativas ou zero");
+									}
 								
-							}while(nAresta<=0);
+								}while(nAresta<=0);
 							
-							if(lda.buscaElementoValorado(vOrigem, vDestino, nAresta) == false) {
+							}catch (NumberFormatException ex) {
+							JOptionPane.showMessageDialog(null, "Insira apenas números.");
+							j--;
+							}
+							
+							if(lda.buscaElemento(vOrigem, vDestino) == false) {
 								lda.insereArestaValorada(vOrigem, vDestino,nAresta);
 								j++;
 							}else {
-								JOptionPane.showMessageDialog(null, "Está aresta já foi inserida!");
+								JOptionPane.showMessageDialog(null, "Esta aresta já foi inserida!");
 							}
 							
 						}while(j<=e);
@@ -296,7 +308,7 @@ static int tamanhoV() { // Metodo para inserir a ordem do Grafo
 }
 
 static int tamanhoE() { // metodo para inserir o tamanho do grafo
-	int e = Integer.parseInt(JOptionPane.showInputDialog("Insira o tamanho do grafo (número de conjuntos/arestas): "));
+	int e = Integer.parseInt(JOptionPane.showInputDialog("Insira a quantia de arestas do grafo: "));
 	return e;
 }
 

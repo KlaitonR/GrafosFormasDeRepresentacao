@@ -19,7 +19,7 @@ public class ListaDeArestas {
 		return primeiroV == null; 
 	}
 	
-	public void insereVertice(int v) {  //Inserir uma aresta em um GRAFO NÃO ORIENTADO
+	public void insereVertice(String v) {  //Inserir uma aresta em um GRAFO NÃO ORIENTADO
 		
 		Vertice vertice = new Vertice(v);
 		
@@ -32,7 +32,7 @@ public class ListaDeArestas {
 			}
 	}
 	
-	public void insereArestaNaoOrientada(int vOrigem, int vDestino) {  //Inserir uma aresta em um GRAFO NÃO ORIENTADO
+	public void insereArestaNaoOrientada(String vOrigem, String vDestino) {  //Inserir uma aresta em um GRAFO NÃO ORIENTADO
 			
 		Aresta aresta = new Aresta(vOrigem, vDestino);
 			
@@ -47,7 +47,7 @@ public class ListaDeArestas {
 		}
 		
 	
-	public void insereArestaOrientada(int vOrigem, int vDestino) { //Inserir uma aresta em um GRAFO ORIENTADO
+	public void insereArestaOrientada(String vOrigem, String vDestino) { //Inserir uma aresta em um GRAFO ORIENTADO
 			
 		Aresta aresta = new Aresta(vOrigem, vDestino);
 			
@@ -61,7 +61,7 @@ public class ListaDeArestas {
 		}
 	}
 		
-	public void insereArestaValorada(int vOrigem, int vDestino, int valor) {  //Inserir uma aresta em um GRAFO VALORADO
+	public void insereArestaValorada(String vOrigem, String vDestino, int valor) {  //Inserir uma aresta em um GRAFO VALORADO
 			
 		Aresta aresta = new Aresta(vOrigem, vDestino, valor);
 			
@@ -75,7 +75,7 @@ public class ListaDeArestas {
 			}
 	}
 		
-	public void insereArestaMultiarestas(int vOrigem, int vDestino, int nArestas) {  //Inserir uma aresta em um GRAFO MULTI ARESTAS
+	public void insereArestaMultiarestas(String vOrigem, String vDestino, int nArestas) {  //Inserir uma aresta em um GRAFO MULTI ARESTAS
 			
 		Aresta aresta = new Aresta(vOrigem, vDestino, nArestas);
 			
@@ -98,7 +98,7 @@ public class ListaDeArestas {
 			}
 		}
 		
-	public boolean buscaElemento(int vOrigem, int vDestino) { //buscar a aresta (conjunto) indicado
+	public boolean buscaElemento(String vOrigem, String vDestino) { //buscar a aresta (conjunto) indicado
 			
 		atual = primeiro;
 		//Enquanto o valor não for nulo (não chegar ao fim da lista, onde o ultima aresta.proximo aponta para null)
@@ -115,7 +115,7 @@ public class ListaDeArestas {
 		
 	}
 	
-	public boolean buscaElementoValorado(int vOrigem, int vDestino, int valor) { //buscar a aresta (conjunto) indicado
+	public boolean buscaElementoValorado(String vOrigem, String vDestino, int valor) { //buscar a aresta (conjunto) indicado
 		
 		atual = primeiro;
 		//Enquanto o valor não for nulo (não chegar ao fim da lista, onde o ultima aresta.proximo aponta para null)
